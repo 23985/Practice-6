@@ -1,0 +1,92 @@
+navigation_helper = """
+Screen:
+    NavigationLayout:
+        ScreenManager:  
+            Screen:
+                name: 'menu'
+                MDRectangleFlatButton:
+                    text: 'Profile'
+                    pos_hint: {'center_x':0.5,'center_y':0.6}
+                    on_press: root.manager = 'profile'
+                MDRectangleFlatButton:
+                    text: 'Upload'
+                    pos_hint: {'center_x':0.5,'center_y':0.5}
+                    on_press: root.manager = 'upload'
+                
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDToolbar:
+                        title: 'Выберите рейс'
+                        left_action_items: [["menu", lambda x: nav_drawer.toggle_nav_drawer()]]
+                        elevation:5
+                    Widget:
+            ProfileScreen:
+                name: 'profile'
+                MDLabel:
+                    text: 'Profile'
+                    halign: 'center'
+                MDRectangleFlatButton:
+                    text: 'Back'
+                    pos_hint: {'center_x':0.5,'center_y':0.1}
+                    on_press: root.manager.current = 'menu'
+            
+            UploadScreen:
+                name: 'upload'
+                MDLabel:
+                    text: 'Upload'
+                    halign: 'center'
+                MDRectangleFlatButton:
+                    text: 'Back'
+                    pos_hint: {'center_x':0.5,'center_y':0.1}
+                    on_press: root.manager.current = 'menu'
+        MDNavigationDrawer:
+            id: nav_drawer
+            ContentNavigationDrawer:
+                orientation: 'vertical'
+                padding: "8dp"
+                spacing: "8dp"
+                Image:
+                    id: avatar
+                    size_hint: (1,1)
+                    source: "logo.jpg"
+                MDLabel:
+                    text: "Bus fleets"
+                    font_style: "Subtitle1"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                MDLabel:
+                    text: "23985@iitu.kz"
+                    size_hint_y: None
+                    font_style: "Caption"
+                    height: self.texture_size[1]
+                ScrollView:
+                    DrawerList:
+                        id: md_list
+
+                        MDList:
+                            OneLineIconListItem:
+                                text: "Расписание"
+
+                                IconLeftWidget:
+                                    icon: "calendar"
+
+
+
+                            OneLineIconListItem:
+                                text: "Автобусы"
+
+                                IconLeftWidget:
+                                    icon: "bus"
+
+
+                            OneLineIconListItem:
+                                text: "История"
+
+                                IconLeftWidget:
+                                    icon: "book"
+
+        
+
+
+
+"""
